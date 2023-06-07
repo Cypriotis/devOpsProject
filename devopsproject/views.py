@@ -25,3 +25,5 @@ def index(request):
     gantt_plot = plot(fig, output_type="div")
     context = {'plot_div': gantt_plot}
     return render(request, 'index.html', context)
+
+    
