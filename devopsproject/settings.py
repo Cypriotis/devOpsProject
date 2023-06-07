@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "plotly_proj",
+    "users",
 ]
 
 MIDDLEWARE = [
