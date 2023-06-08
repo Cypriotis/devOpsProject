@@ -37,8 +37,8 @@
 <body>
     <nav>
         <ul>
-            <li><a href="">Add Project</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="{% url 'create_project' %}">AddProject</a></li>
+            <li><a href="{% url 'register_user' %}">Register</a></li>
             <li><a href="{% url 'logout' %}">logout</a></li>
             <li><a href="{% url 'login' %}">login</a></li>
         </ul>
