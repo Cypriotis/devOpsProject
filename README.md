@@ -18,3 +18,14 @@ Init:
 
 -python manage.py runserver
 
+
+
+sql:
+
+apt-get install python3-pip python3-dev libmysqlclient-dev 
+
+pip install mysqlclient
+
+requirements
+
+pip install -r requirements.txt
