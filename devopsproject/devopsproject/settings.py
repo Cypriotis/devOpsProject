@@ -15,6 +15,15 @@ import os
 import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+import environ
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, True)
+)
+
+
+# reading .env file
+environ.Env.read_env()
 
 
 # Quick-start development settings - unsuitable for production
@@ -78,22 +87,31 @@ WSGI_APPLICATION = "devopsproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 #
+#DATABASES = {
+#    "default": {
+#        "ENGINE": "django.db.backends.sqlite3",
+#        "NAME": BASE_DIR / "db.sqlite3",
+#    }
+#}
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    # read os.environ['DATABASE_URL'] and raises ImproperlyConfigured exception if not found
+    'default': env.db(),
+    # read os.environ['SQLITE_URL']
+    'extra': env.db('SQLITE_URL', default='sqlite:///data/db.sqlite3')
 }
 
+
 #DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': '@django',
-#        'USER': 'root',
-#        'PASSWORD': '',
-#        'HOST': 'localhost',
-#        'PORT': '3320',
-#    }
+#	'default': {
+#    	'ENGINE': 'django.db.backends.mysql',
+#    	'NAME': 'django_Test',
+#    	'USER': 'db_user',
+#    	'PASSWORD': 'pass123',
+#    	'HOST': '127.0.0.1',   
+#    	'PORT': '3308',
+#    	'CONN_MAX_AGE' : 600,
+#	}
 #}
 
 

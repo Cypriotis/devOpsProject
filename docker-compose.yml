@@ -1,0 +1,69 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: django.Dockerfile
+  db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    env_file:
+     - ./devopsproject/devopsproject/.env
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: django_Test
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: pass123
+    ports:
+      - 3309:3308
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u db_user -p${MYSQL_ALLOW_EMPTY_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  django-migrate:
+    command: sh -c 'python manage.py makemigrations && python manage.py migrate'
+    build:
+      context: .
+      dockerfile: django.Dockerfile
+    env_file:
+     - ./devopsproject/devopsproject/.env
+    depends_on:
+      db:
+        condition: service_healthy
+  
+  django:
+    build:
+      context: .
+      dockerfile: django.Dockerfile
+    env_file:
+     - ./devopsproject/devopsproject/.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - static_volume:/app/static
+    depends_on:
+      - django-migrate
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./assets/nginx/nginx.http.config:/etc/nginx/nginx.conf
+      #- ./assets/nginx/certs:/etc/nginx/certs
+      - static_volume:/app/static
+    ports:
+      # - "443:443"
+      - "8000:8000"
+    depends_on:
+      - django
+    restart:
+      on-failure:5
+
+volumes:
+  dj_postgres_data:
+  static_volume:
+  db_data:
