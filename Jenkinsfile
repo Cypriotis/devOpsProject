@@ -16,8 +16,7 @@ pipeline {
             steps {
                 sh '''
                     python3 -m venv myvenv
-                    python3 -m venv myvenv
-                    source myvenv/bin/activate
+                    sh '. myvenv/bin/activate'
                     pip install -r requirements.txt
                     cd devopsproject
                     cp devopsproject/.env.example devopsproject/.env'''
