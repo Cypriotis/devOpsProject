@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'main', url: 'https://github.com/Cypriotis/devopsproject.git'
+                git branch: 'main', url: 'git@github.com:Cypriotis/devopsproject.git'
 
                 
             }
