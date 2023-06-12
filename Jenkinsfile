@@ -43,7 +43,7 @@ pipeline {
                     pwd
                     echo $WORKSPACE
 
-                    ansible-playbook -i ~/workspace/ansible-example/hosts.yml -l db ~/workspace/ansible-example/mysql.yml
+                    ansible-playbook -i ~/workspace/ansible-example/hosts.yml -l db ~/workspace/ansible-example/playbooks/mysql.yml
             '''
         }
     }
