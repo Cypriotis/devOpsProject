@@ -52,6 +52,8 @@ pipeline {
             steps{
                 sshagent (credentials: ['ssh-deployment-1']) {
                     sh '''
+                    pwd
+                    echo $WORKSPACE
                         ansible-playbook -i ~/workspace/ansibledevops/hosts.yml -l db --extra-vars "user_dir=/home/azureuser" ~/workspace/ansibledevops/django-install.yml
                     '''
                 }
