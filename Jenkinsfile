@@ -30,8 +30,8 @@ pipeline {
                 '''
 
                 sh '''
-                    mkdir -p ~/workspace/ansible-project/files/certs
-                    cd ~/workspace/ansible-project/files/certs
+                    mkdir -p ~/workspace/Ansible/files/certs
+                    cd ~/workspace/Ansible/files/certs
                     openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 --nodes -subj '/C=GR/O=myorganization/OU=it/CN=myorg.com'
                 '''
             }
@@ -43,7 +43,7 @@ pipeline {
                     pwd
                     echo $WORKSPACE
 
-                    ansible-playbook -i ~/workspace/ansibledevops/hosts.yml -l db ~/workspace/ansibledevops/mysql.yml
+                    ansible-playbook -i ~/workspace/Ansible/hosts.yml -l db ~/workspace/Ansible/mysql.yml
             '''
         }
     }
@@ -54,7 +54,7 @@ pipeline {
                     sh '''
                     pwd
                     echo $WORKSPACE
-                        ansible-playbook -i ~/workspace/ansibledevops/hosts.yml -l db --extra-vars "user_dir=/home/azureuser user_name=azureuser" ~/workspace/ansibledevops/django-install.yml
+                        ansible-playbook -i ~/workspace/Ansible/hosts.yml -l db --extra-vars "user_dir=/home/azureuser user_name=azureuser" ~/workspace/Ansible/django-install.yml
                     '''
                 }
 
