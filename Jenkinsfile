@@ -30,8 +30,8 @@ pipeline {
                 '''
 
                 sh '''
-                    mkdir -p ~/workspace/Ansible/files/certs
-                    cd ~/workspace/Ansible/files/certs
+                    mkdir -p ~/workspace/ansible-example/files/certs
+                    cd ~/workspace/ansible-example/files/certs
                     openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 --nodes -subj '/C=GR/O=myorganization/OU=it/CN=myorg.com'
                 '''
             }
@@ -43,7 +43,7 @@ pipeline {
                     pwd
                     echo $WORKSPACE
 
-                    ansible-playbook -i ~/workspace/Ansible/hosts.yml -l db ~/workspace/Ansible/mysql.yml
+                    ansible-playbook -i ~/workspace/ansible-example/hosts.yml -l db ~/workspace/ansible-example/mysql.yml
             '''
         }
     }
@@ -54,7 +54,7 @@ pipeline {
                     sh '''
                     pwd
                     echo $WORKSPACE
-                        ansible-playbook -i ~/workspace/Ansible/hosts.yml -l db --extra-vars "user_dir=/home/azureuser user_name=azureuser workingdir=/home/azureuser/devopsproject/devopsproject execstart=/home/azureuser/devopsproject/myvenv/bin/gunicorn --access-logfile - --workers 3 --bind 0.0.0.0:8000 devopsproject.wsgi:application app_port=8000" ~/workspace/Ansible/django-install.yml
+                        ansible-playbook -i ~/workspace/ansible-example/hosts.yml -l db --extra-vars "user_dir=/home/azureuser user_name=azureuser workingdir=/home/azureuser/devopsproject/devopsproject execstart=/home/azureuser/devopsproject/myvenv/bin/gunicorn --access-logfile - --workers 3 --bind 0.0.0.0:8000 devopsproject.wsgi:application app_port=8000" ~/workspace/ansible-example/django-install.yml
                     '''
                 }
 
