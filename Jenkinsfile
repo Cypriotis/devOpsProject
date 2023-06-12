@@ -54,7 +54,7 @@ pipeline {
                     sh '''
                     pwd
                     echo $WORKSPACE
-                        ansible-playbook -i ~/workspace/ansibledevops/hosts.yml -l db --extra-vars "user_dir=/home/azureuser user_name:azureuser" ~/workspace/ansibledevops/django-install.yml
+                        ansible-playbook -i ~/workspace/ansibledevops/hosts.yml -l db --extra-vars "user_dir=/home/azureuser user_name=azureuser" ~/workspace/ansibledevops/django-install.yml
                     '''
                 }
 
