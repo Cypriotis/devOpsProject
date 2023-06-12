@@ -17,7 +17,7 @@ pipeline {
                 sh '''
                     python3 -m venv myvenv
                     pwd
-                    source /var/lib/jenkins/workspace/django-pipeline/myvenv/bin/activate
+                    source ./myvenv/bin/activate
                     pwd
                     pip install -r requirements.txt
                     cd devopsproject
