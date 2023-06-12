@@ -48,6 +48,15 @@ pipeline {
         }
     }
 }
+        stage('deploym to vm 1') {
+            steps{
+                sshagent (credentials: ['ssh-deployment-1']) {
+                    sh '''
+                        ansible-playbook -i ~/workspace/ansibledevops/hosts.yml -l localhost --extra-vars "user_dir=/home/azureuser" ~/workspace/ansibledevops/playbooks/django-install.yml
+                    '''
+                }
+
+            }
 
         
     }
