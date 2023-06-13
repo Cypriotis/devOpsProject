@@ -15,7 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                    python3 -m venv myvenv
+                    sudo python3 -m venv myvenv
                     . ./myvenv/bin/activate
                     pip install -r requirements.txt
                     echo here
