@@ -26,7 +26,7 @@ pipeline {
         stage('Install Ansible prerequisites') {
             steps {
                 sh '''
-                    ansible-galaxy install geerlingguy.mysql
+                    ansible-galaxy install geerlingguy.postgresql
                 '''
 
                 sh '''
