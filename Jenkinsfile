@@ -15,7 +15,6 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                    sudo apt install python3.8-venv
                     python3 -m venv myvenv
                     . ./myvenv/bin/activate
                     pip install -r requirements.txt
