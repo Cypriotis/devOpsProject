@@ -26,7 +26,7 @@ pipeline {
         stage('Install Ansible prerequisites') {
             steps {
                 sh '''
-                    ansible-galaxy install geerlingguy.postgresql
+                    ansible-galaxy install geerlingguy.mysql
                 '''
 
                 sh '''
@@ -43,7 +43,7 @@ pipeline {
                     pwd
                     echo $WORKSPACE
 
-                    ansible-playbook -i ~/workspace/ansible-example/hosts.yml -l db01 ~/workspace/ansible-example/playbooks/postgres.yml
+                    ansible-playbook -i ~/workspace/ansible-example/hosts.yml -l db01 ~/workspace/ansible-example/playbooks/mysql-database.yml
             '''
         }
     }
