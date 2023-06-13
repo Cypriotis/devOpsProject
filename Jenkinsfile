@@ -54,7 +54,7 @@ pipeline {
                     sh '''
                     pwd
                     echo $WORKSPACE
-                        ansible-playbook -i ~/workspace/ansible-example/hosts.yml -l db01 --extra-vars "user_dir=/home/azureuser user_name=azureuser workingdir=/home/azureuser/devopsproject/devopsproject execstart=/home/azureuser/devopsproject/myvenv/bin/gunicorn --access-logfile - --workers 3 --bind 0.0.0.0:8000 devopsproject.wsgi:application app_port=8000" ~/workspace/ansible-example/playbooks/django-project-install.yml
+                        ansible-playbook -i ~/workspace/ansible-example/hosts.yml -l db01 --extra-vars "user_dir=/home/azureuser" ~/workspace/ansible-example/playbooks/django-project-install.yml
                     '''
                 }
 
