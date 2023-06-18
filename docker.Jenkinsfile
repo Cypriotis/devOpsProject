@@ -55,19 +55,5 @@ pipeline {
                 '''
             }
         }
-
-        stage('install docker to tagret vm') {
-            steps {
-                sh '''
-                    ansible-galaxy install geerlingguy.docker
-                    ansible-galaxy install geerlingguy.pip
-                '''
-                sh '''
-                    ansible-playbook -i ~/workspace/ansible-project/hosts.yml -l deploy-vm-1 ~/workspace/ansible-project/playbooks/docker-install.yml
-
-                '''
-            }
-
-        }
     }
 }
