@@ -38,13 +38,6 @@ spec:
         ports:
         - containerPort:  8000
           name:  django
-        volumeMounts:
-        - name: localtime
-          mountPath: /etc/localtime
-      volumes:
-        - name: localtime
-          hostPath:
-            path: /usr/share/zoneinfo/Asia/Shanghai
       restartPolicy: Always
       imagePullSecrets:
        - name: registry-credentials
