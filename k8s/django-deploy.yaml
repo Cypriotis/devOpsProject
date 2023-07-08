@@ -21,7 +21,7 @@ spec:
           # - Each init container must complete successfully before the next one starts.
       containers:
       - name:  django
-        image:  ghcr.io/cypriotis/django:latest
+        image:  ghcr.io/cypriotis/django:7a33bfa-3
         resources:
           requests:
             cpu: 100m
