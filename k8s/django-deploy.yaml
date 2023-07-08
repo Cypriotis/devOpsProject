@@ -33,11 +33,11 @@ spec:
         - name: DB_HOST
           valueFrom:
             configMapKeyRef:
-              name: MYAPP
+              name: django
               key: DB_HOST
         ports:
-        - containerPort:  80
-          name:  MYAPP
+        - containerPort:  8000
+          name:  django
         volumeMounts:
         - name: localtime
           mountPath: /etc/localtime
