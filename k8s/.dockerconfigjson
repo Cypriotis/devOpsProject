@@ -1,0 +1,10 @@
+{
+    "auths": {
+        "https://ghcr.io":{
+            "username":"cypriotis",
+            "password":"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",
+            "email":"it22131@hua.gr",
+            "auth":"Y3lwcmlvdGlzOmdocF81ZFpSMU1qRk1ZUmRKSWlCWmk0MVBJRnkwRXR0Y2wyVDdvamk="
+    	}
+    }
+}
