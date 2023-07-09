@@ -2,9 +2,9 @@
     "auths": {
         "https://ghcr.io":{
             "username":"cypriotis",
-            "password":"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",
+            "password":"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",
             "email":"sotiristofinis1@gmail.com",
-            "auth":"Y3lwcmlvdGlzOmdocF9idVN6ZVVBeXZyZEpJVUp0UmdnUVVadmhlUktjTzYyVzJ5TnM="
+            "auth":"Y3lwcmlvdGlzOmdocF9QQ2FJVXZ1THhMQ2dNRWZjeXhKZEJod1VBblhRR3IyRGM3WUs="
     	}
     }
 }
